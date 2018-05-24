@@ -34,9 +34,9 @@ ext {
     // App dependencies
     supportLibraryVersion = '27.0.2'
     playServiceVersion = '10.2.0'
-    butterKnifeVersion = '8.7.0'
+    butterKnifeVersion = '8.8.1'
 //    timberVersion = '4.5.1'
-    glideVersion = '3.7.0'
+    glideVersion = '4.4.0'
     indicatorVersion = '2.4.1'
     calendarviewVersion = '1.4.3'
     photoView = '2.1.3'

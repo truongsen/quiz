@@ -1,4 +1,4 @@
-package com.vn.senth.vnhistory;
+package com.vn.senth.quiz;
 
 import org.junit.Test;
 

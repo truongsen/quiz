@@ -1,4 +1,4 @@
-package com.vn.senth.vnhistory;
+package com.vn.senth.quiz;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -111,5 +113,12 @@ public class StringUtils {
         }
 
         return builder.toString();
+    }
+
+    public static List<String> getListBySeparate(String input, String separate) {
+        if (isEmpty(input) || isEmpty(separate))
+            return null;
+        String[] output = input.split(separate);
+        return Arrays.asList(output);
     }
 }

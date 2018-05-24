@@ -2,6 +2,8 @@ package com.vn.base;
 
 import android.app.Application;
 
+import com.bumptech.glide.Glide;
+
 import okhttp3.OkHttpClient;
 
 
@@ -22,7 +24,6 @@ public class BaseApplication extends Application {
     public void onCreate() {
 //        sharedPreferences = new SharedPrefUtils(getApplicationContext());
         super.onCreate();
-
     }
 
     public OkHttpClient buildSSLOkHttpClient() {

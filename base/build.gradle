@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion  rootProject.ext.compileSdkVersion
+    compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
@@ -34,4 +34,8 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:3.6.0'
     // lib base
     implementation "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
+    // glide
+    implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
+//    compile "com.github.bumptech.glide:annotations:$rootProject.glideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
 }

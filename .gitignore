@@ -53,3 +53,10 @@ gen-external-apklibs
 
 
 # End of https://www.gitignore.io/api/android
+
+/local.properties
+.DS_Store
+/build
+/captures
+app/libs/
+library/build/

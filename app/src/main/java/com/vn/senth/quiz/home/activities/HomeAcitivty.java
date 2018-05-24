@@ -5,6 +5,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.vn.base.utils.StringUtils;
 import com.vn.senth.quiz.R;
 import com.vn.senth.quiz.base.BaseActivity;
@@ -37,7 +38,7 @@ public class HomeAcitivty extends BaseActivity implements OnItemClickListener {
         tvQuestion.setText(quiz.getQuestion());
 //        int drawableResourceId = this.getResources().getIdentifier(quiz.getImage(), "drawable", this.getPackageName());
 //        ivQuestion.setImageResource(drawableResourceId);
-
+        Glide.with(this).load(quiz.getImage()).into(ivQuestion);
         adapter.resetData();
         adapter.addData(StringUtils.getListBySeparate(quiz.getAnswer(), QuizConstant.QUESTION_SEPARATE_CHARACTER));
     }
@@ -68,6 +69,7 @@ public class HomeAcitivty extends BaseActivity implements OnItemClickListener {
             Toast.makeText(this, "You must choose answer", Toast.LENGTH_SHORT).show();
             return;
         }
+
         if (currentQuiz.checkAnswer(answerChoose)) {
             Toast.makeText(this, "Correct answer", Toast.LENGTH_SHORT).show();
             quizNumber++;

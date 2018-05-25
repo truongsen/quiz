@@ -4,13 +4,11 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
-
+import com.vn.core.base.BaseAdapter;
+import com.vn.core.base.BaseHolder;
+import com.vn.core.base.OnItemClickListener;
 import com.vn.senth.quiz.R;
-import com.vn.senth.quiz.base.BaseAdapter;
-import com.vn.senth.quiz.base.BaseHolder;
-import com.vn.senth.quiz.base.OnItemClickListener;
 import com.vn.senth.quiz.home.holder.AnswerHolder;
-import com.vn.senth.quiz.model.Quiz;
 
 import java.util.List;
 

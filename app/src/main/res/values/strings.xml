@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Funny Quiz</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="facebook_app_id">130498701156533</string>
+    <string name="fb_login_protocol_scheme">fb130498701156533</string>
 </resources>

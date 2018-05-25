@@ -3,9 +3,9 @@ package com.vn.senth.quiz.home.holder;
 import android.view.View;
 import android.widget.TextView;
 
-import com.vn.base.utils.StringUtils;
+import com.vn.core.base.BaseHolder;
+import com.vn.core.utils.StringUtils;
 import com.vn.senth.quiz.R;
-import com.vn.senth.quiz.base.BaseHolder;
 
 import butterknife.BindView;
 

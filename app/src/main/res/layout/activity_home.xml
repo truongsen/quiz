@@ -1,56 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBlue1">
+    android:fitsSystemWindows="true">
 
-    <ScrollView
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none">
+        android:background="@color/colorBlue1">
 
-        <LinearLayout
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="@dimen/padding_medium">
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-            <ImageView
-                android:id="@+id/ivQuestion"
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_launcher_background" />
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimaryDark"
+                app:layout_scrollFlags="enterAlways|scroll" />
 
-            <TextView
-                android:id="@+id/tvQuestion"
-                style="@style/textViewDefault"
-                android:layout_marginTop="@dimen/padding_small"
-                android:text="Method annotations whose corresponding listener has multiple callbacks can be used to bind to any one of them. Each annotation has a default callback that it binds to. Specify an alternate using the callback parameter."
-                android:textStyle="bold" />
+        </android.support.design.widget.AppBarLayout>
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rvAnswer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/padding_medium"
-                app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="?attr/actionBarSize">
 
-            <RelativeLayout
-                android:id="@+id/btnCheck"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginTop="@dimen/padding_medium"
-                android:background="@drawable/bg_next"
-                android:padding="5dp">
+            <include layout="@layout/layout_home_container" />
+        </android.support.v4.widget.NestedScrollView>
+    </android.support.design.widget.CoordinatorLayout>
 
-                <ImageView
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:src="@drawable/ic_next" />
-            </RelativeLayout>
-        </LinearLayout>
-    </ScrollView>
-</RelativeLayout>
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="false"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/menu_navigation_home" />
+</android.support.v4.widget.DrawerLayout>

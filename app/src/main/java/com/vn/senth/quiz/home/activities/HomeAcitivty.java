@@ -1,15 +1,20 @@
 package com.vn.senth.quiz.home.activities;
 
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.vn.base.utils.StringUtils;
+import com.vn.core.base.BaseActivity;
+import com.vn.core.base.OnItemClickListener;
+import com.vn.core.utils.StringUtils;
 import com.vn.senth.quiz.R;
-import com.vn.senth.quiz.base.BaseActivity;
-import com.vn.senth.quiz.base.OnItemClickListener;
 import com.vn.senth.quiz.data.QuizManager;
 import com.vn.senth.quiz.home.adapter.AnswerAdapter;
 import com.vn.senth.quiz.model.Quiz;
@@ -27,6 +32,10 @@ public class HomeAcitivty extends BaseActivity implements OnItemClickListener {
     TextView tvQuestion;
     @BindView(R.id.rvAnswer)
     RecyclerView rvAnswer;
+    @BindView(R.id.navView)
+    NavigationView navView;
+    @BindView(R.id.drawer_layout)
+    DrawerLayout mDrawerLayout;
     private AnswerAdapter adapter;
     private int answerChoose = -1;
     private Quiz currentQuiz;
@@ -36,8 +45,6 @@ public class HomeAcitivty extends BaseActivity implements OnItemClickListener {
             Toast.makeText(this, "Congratulation", Toast.LENGTH_SHORT).show();
         answerChoose = -1;
         tvQuestion.setText(quiz.getQuestion());
-//        int drawableResourceId = this.getResources().getIdentifier(quiz.getImage(), "drawable", this.getPackageName());
-//        ivQuestion.setImageResource(drawableResourceId);
         Glide.with(this).load(quiz.getImage()).into(ivQuestion);
         adapter.resetData();
         adapter.addData(StringUtils.getListBySeparate(quiz.getAnswer(), QuizConstant.QUESTION_SEPARATE_CHARACTER));
@@ -53,6 +60,22 @@ public class HomeAcitivty extends BaseActivity implements OnItemClickListener {
         adapter = new AnswerAdapter(this, null);
         adapter.setOnItemClickListener(this);
         rvAnswer.setAdapter(adapter);
+        navView.setNavigationItemSelectedListener(
+                menuItem -> {
+                    menuItem.setChecked(true);
+                    mDrawerLayout.closeDrawers();
+                    return true;
+                });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                mDrawerLayout.openDrawer(GravityCompat.START);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -83,5 +106,13 @@ public class HomeAcitivty extends BaseActivity implements OnItemClickListener {
     @Override
     public void onItemClick(int position) {
         answerChoose = position;
+    }
+
+    @Override
+    public void setUpToolbar() {
+        super.setUpToolbar();
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
     }
 }

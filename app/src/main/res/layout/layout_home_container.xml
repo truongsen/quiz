@@ -1,36 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <ImageView
+        android:id="@+id/ivQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_launcher_background" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/padding_medium">
-
-        <ImageView
-            android:id="@+id/ivQuestion"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_launcher_background" />
+        android:paddingLeft="@dimen/padding_medium"
+        android:paddingRight="@dimen/padding_medium">
 
         <TextView
             android:id="@+id/tvQuestion"
             style="@style/textViewDefault"
             android:layout_marginTop="@dimen/padding_small"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/text_size_large"
             android:textStyle="bold" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvAnswer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/padding_medium"
-            android:paddingBottom="@dimen/padding_small"
-            android:nestedScrollingEnabled="false"
+            android:layout_marginTop="@dimen/padding_small"
             android:clipToPadding="false"
+            android:nestedScrollingEnabled="false"
+            android:paddingBottom="@dimen/padding_small"
             app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
 
         <RelativeLayout
@@ -38,7 +43,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:layout_marginTop="@dimen/padding_small"
             android:background="@drawable/bg_next"
             android:padding="5dp">
 
@@ -48,5 +52,5 @@
                 android:src="@drawable/ic_next" />
         </RelativeLayout>
     </LinearLayout>
-</FrameLayout>
+</LinearLayout>
 

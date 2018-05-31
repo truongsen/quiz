@@ -112,4 +112,10 @@ public class StringUtils {
         String[] output = input.split(separate);
         return Arrays.asList(output);
     }
+
+    public static String removeWhiteSpace(String input) {
+        if (input == null)
+            return "";
+        return input.trim();
+    }
 }

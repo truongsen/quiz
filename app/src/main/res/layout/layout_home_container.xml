@@ -24,7 +24,7 @@
             android:id="@+id/tvQuestion"
             style="@style/textViewDefault"
             android:layout_marginTop="@dimen/padding_small"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/colorGray"
             android:textSize="@dimen/text_size_large"
             android:textStyle="bold" />
 

@@ -9,7 +9,7 @@
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorGrayBackground">
 
         <android.support.design.widget.AppBarLayout
             android:id="@+id/appbar"
@@ -21,7 +21,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="#3f51b5"
+                android:background="@color/colorPrimary"
                 app:layout_scrollFlags="enterAlways|scroll" />
 
         </android.support.design.widget.AppBarLayout>

@@ -47,8 +47,8 @@ dependencies {
     // lib base
     api "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
     // glide
-    api "com.github.bumptech.glide:glide:$rootProject.glideVersion"
-    api "com.github.bumptech.glide:annotations:$rootProject.glideVersion"
+    implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
+    implementation "com.github.bumptech.glide:annotations:$rootProject.glideVersion"
     api "com.jakewharton:butterknife:$rootProject.butterKnifeVersion"
     annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
 }

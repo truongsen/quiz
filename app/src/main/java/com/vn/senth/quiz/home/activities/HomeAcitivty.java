@@ -10,9 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.vn.core.base.BaseActivity;
 import com.vn.core.base.OnItemClickListener;
+import com.vn.core.utils.ImageUtils;
 import com.vn.core.utils.StringUtils;
 import com.vn.senth.quiz.R;
 import com.vn.senth.quiz.data.QuizManager;
@@ -45,7 +45,7 @@ public class HomeAcitivty extends BaseActivity implements OnItemClickListener {
             Toast.makeText(this, "Congratulation", Toast.LENGTH_SHORT).show();
         answerChoose = -1;
         tvQuestion.setText(quiz.getQuestion());
-        Glide.with(this).load(quiz.getImage()).into(ivQuestion);
+        ImageUtils.loadImage(this, quiz.getImage(), ivQuestion);
         adapter.resetData();
         adapter.addData(StringUtils.getListBySeparate(quiz.getAnswer(), QuizConstant.QUESTION_SEPARATE_CHARACTER));
     }

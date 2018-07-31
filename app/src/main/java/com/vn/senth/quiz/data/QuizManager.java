@@ -29,7 +29,8 @@ public class QuizManager {
     }
 
     List<Quiz> listQuiz = new ArrayList<Quiz>() {{
-        add(new Quiz("https://image.ibb.co/nbB4T8/img1.jpg", "Question 1", "Answer 1;Answer 2;Answer 3;Answer 4", 1));
+        add(new Quiz("https://image.ibb.co/nbB4T8/img1.jpg", "Mar 5, 2016\n" +
+                "I tried this architecture and it feels like I am building a world class product. Thanks for raising the bar so high", "I tried this architecture and it feels like I am building a world class product. Thanks for raising the bar so high;Answer 2;Answer 3;Answer 4", 1));
         add(new Quiz("https://image.ibb.co/cp0bao/img3.jpg", "Question 2", "Answer 1;Answer 2;Answer 3;Answer 4", 0));
         add(new Quiz("https://image.ibb.co/nbB4T8/img1.jpg", "Question 3", "Answer 1;Answer 2;Answer 3;Answer 4", 3));
         add(new Quiz("https://image.ibb.co/cp0bao/img3.jpg", "Question 4", "Answer 1;Answer 2;Answer 3;Answer 4", 2));

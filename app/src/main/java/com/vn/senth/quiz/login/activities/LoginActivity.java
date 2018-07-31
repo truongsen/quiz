@@ -2,8 +2,6 @@ package com.vn.senth.quiz.login.activities;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.util.Log;
-import android.widget.Toast;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -19,6 +17,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.Status;
 import com.vn.core.base.BaseActivity;
 import com.vn.senth.quiz.R;
+import com.vn.senth.quiz.home.activities.HomeAcitivty;
 
 import java.util.Arrays;
 
@@ -54,7 +53,7 @@ public class LoginActivity extends BaseActivity implements GoogleApiClient.OnCon
                 new FacebookCallback<LoginResult>() {
                     @Override
                     public void onSuccess(LoginResult loginResult) {
-                        Log.d("facebook", loginResult.getAccessToken().getToken());
+                        laucherNextScreen();
                     }
 
                     @Override
@@ -103,7 +102,7 @@ public class LoginActivity extends BaseActivity implements GoogleApiClient.OnCon
             // Signed in successfully, show authenticated UI
             GoogleSignInAccount acct = result.getSignInAccount();
             if (acct != null) {
-                Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
+                laucherNextScreen();
             }
         } else {
             // Signed out, show unauthenticated UI.
@@ -131,4 +130,12 @@ public class LoginActivity extends BaseActivity implements GoogleApiClient.OnCon
     public void loginByFacebook() {
         LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile", "user_friends", "email"));
     }
+
+    @OnClick(R.id.tvSkip)
+    public void laucherNextScreen() {
+        Intent intent = new Intent(this, HomeAcitivty.class);
+        startActivity(intent);
+        finish();
+    }
+
 }

@@ -8,20 +8,16 @@ import com.google.gson.FieldNamingPolicy;
 import com.google.gson.GsonBuilder;
 import com.vn.core.BuildConfig;
 
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
-import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -54,31 +50,23 @@ public class ApiService<T> {
             interceptor.setLevel(HttpLoggingInterceptor.Level.NONE);
         }
         final OkHttpClient.Builder builder = getOkHttpClient()
-                .hostnameVerifier(new HostnameVerifier() {
-                    @Override
-                    public boolean verify(String hostname, SSLSession session) {
-                        return ApiService.this.verify(hostname, session);
-                    }
-                })
+                .hostnameVerifier((hostname, session) -> ApiService.this.verify(hostname, session))
                 .addInterceptor(interceptor);
-        builder.addInterceptor(new Interceptor() {
-            @Override
-            public Response intercept(@NonNull Chain chain) throws IOException {
-                Request original = chain.request();
-                Request.Builder requestBuilder = original.newBuilder();
-                requestBuilder.addHeader("Accept", "application/json");
-                requestBuilder.addHeader("Content-Type", "application/json");
-                addHeader(requestBuilder);
-                Request request = requestBuilder.build();
-                return chain.proceed(request);
-            }
+        builder.addInterceptor(chain -> {
+            Request original = chain.request();
+            Request.Builder requestBuilder = original.newBuilder();
+            requestBuilder.addHeader("Accept", "application/json");
+            requestBuilder.addHeader("Content-Type", "application/json");
+            addHeader(requestBuilder);
+            Request request = requestBuilder.build();
+            return chain.proceed(request);
         });
 
-        final long timeOut = 60;
+        long timeOut = 30;
         OkHttpClient okHttpClient = builder.connectTimeout(timeOut, TimeUnit.SECONDS)
-                                           .readTimeout(3*timeOut, TimeUnit.SECONDS)
-                                           .writeTimeout(3* timeOut, TimeUnit.SECONDS)
-                                           .build();
+                .readTimeout(timeOut, TimeUnit.SECONDS)
+                .writeTimeout(timeOut, TimeUnit.SECONDS)
+                .build();
         final Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(mHost)
                 .addConverterFactory(GsonConverterFactory.create(gsonBuilder.create()))
